@@ -1,0 +1,29 @@
+BasedOnStyle: Microsoft
+Language: Cpp
+Standard: Cpp11
+
+# Braces
+BreakBeforeBraces: Allman
+
+# Indentation
+UseTab: Always
+IndentWidth: 4
+TabWidth: 4
+
+# Line length
+ColumnLimit: 0
+
+# Includes
+SortIncludes: false
+IncludeBlocks: Preserve
+
+# Spacing (keep close to MSVC defaults)
+SpaceBeforeParens: ControlStatements
+SpacesInAngles:  false
+SpacesInParentheses: false
+SpaceAfterCStyleCast: false
+
+# Keep declaration/definition wrapping simple
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
