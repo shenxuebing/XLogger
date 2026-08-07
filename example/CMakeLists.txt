@@ -22,6 +22,10 @@ target_link_libraries(custom_format_example XLogger)
 add_executable(level_test_example level_test_example.cpp)
 target_link_libraries(level_test_example XLogger)
 
+# 敏感数据脱敏（SM4）与内存检查示例
+add_executable(sensitive_example sensitive_example.cpp)
+target_link_libraries(sensitive_example XLogger)
+
 # 基于配置文件的示例（需配合 -DXLOGGER_ENABLE_CONFIG=ON）
 add_executable(config_example config_example.cpp)
 target_link_libraries(config_example XLogger)
