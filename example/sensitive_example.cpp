@@ -37,6 +37,14 @@ void dumpBuffer()
 	XLOG_MEMHEX(buffer, sizeof(buffer));
 }
 
+// 演示原始二进制数据脱敏：缓冲区中可以包含 '\0'，不能按 C 字符串处理
+void maskBinaryPayload()
+{
+	const unsigned char payload[] = {0x00, 0x10, 0x20, 0x7F, 0x80, 0xFE, 0xFF};
+	const std::string masked = XLogger::encryptSensitiveData(payload, sizeof(payload));
+	XLOG_INFO("binary payload 已脱敏，密文长度={}", masked.size());
+}
+
 // 演示 DLL / 进程退出场景下的安全访问
 void safeAccessAfterShutdown()
 {
@@ -72,10 +80,13 @@ int main()
 	// 3. 内存十六进制检查
 	dumpBuffer();
 
-	// 4. 安全访问检查
+	// 4. 原始二进制数据脱敏
+	maskBinaryPayload();
+
+	// 5. 安全访问检查
 	safeAccessAfterShutdown();
 
-	// 5. 同一字段连续两次脱敏：密文每次都不同（含随机盐），可用于验证随机性
+	// 6. 同一字段连续两次脱敏：密文每次都不同（含随机盐），可用于验证随机性
 	std::string pwd = "same-password";
 	std::cout << "\n验证随机性（同一明文两次脱敏密文应不同）:\n"
 			  << "  第1次: " << XLogger::encryptSensitiveData(pwd) << "\n"

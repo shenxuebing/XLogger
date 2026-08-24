@@ -1,0 +1,4 @@
+add_executable(xlogger_sensitive_tests sensitive_tests.cpp)
+target_link_libraries(xlogger_sensitive_tests XLogger)
+
+add_test(NAME xlogger_sensitive_tests COMMAND xlogger_sensitive_tests)

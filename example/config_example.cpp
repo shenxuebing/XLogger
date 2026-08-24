@@ -7,7 +7,7 @@ int main()
 {
 #ifdef _WIN32
 	system("CHCP 65001"); // 改变UTF-8编码，便于中文输出
-#endif					  // _WIN32
+#endif // _WIN32
 
 	std::cout << "XLogger 配置文件示例" << std::endl;
 	std::cout << "===================" << std::endl;

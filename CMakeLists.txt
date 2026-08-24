@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(XLogger VERSION 1.0.0 LANGUAGES CXX)
+include(CTest)
 
 # 设置C++标准
 set(CMAKE_CXX_STANDARD 11)
@@ -35,6 +36,10 @@ endif()
 option(BUILD_EXAMPLES "Build examples" ON)
 if(BUILD_EXAMPLES)
     add_subdirectory(example)
+endif()
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
 endif()
 
 # 安装/打包暂时关闭，避免导出依赖子模块目标造成错误
